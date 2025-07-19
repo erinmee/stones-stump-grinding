@@ -26,7 +26,7 @@
     
     <div class="services-container">
         <div class="service-card" onclick="toggleService(this)">
-            <img src="images/stump_grinder_1.jpg" alt="Stump Grinding Service" class="service-image">
+            <img src="images/stump_grinder_skid_steer.jpg" alt="Stump Grinding Service" class="service-image" onerror="this.style.display='none'">
             <div class="service-content">
                 <div class="service-header">
                     <h2 class="service-title">Stump Grinding</h2>
@@ -104,33 +104,76 @@
 </footer>
 
 <script>
-function toggleService(card) {
-    // Close all other cards first
+// Ensure DOM is fully loaded before running any JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing service cards...');
+    
+    // Initialize service card functionality
+    initializeServiceCards();
+    
+    // Add loading animations
+    addLoadingAnimations();
+});
+
+function initializeServiceCards() {
+    const serviceCards = document.querySelectorAll('.service-card');
+    console.log('Found', serviceCards.length, 'service cards');
+    
+    serviceCards.forEach((card, index) => {
+        // Remove any existing click listeners
+        card.removeEventListener('click', handleServiceClick);
+        
+        // Add click listener
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            handleServiceClick(this);
+        });
+        
+        console.log('Initialized card', index + 1);
+    });
+}
+
+function handleServiceClick(clickedCard) {
+    console.log('Service card clicked');
+    
+    // Get all service cards
     const allCards = document.querySelectorAll('.service-card');
-    allCards.forEach(otherCard => {
-        if (otherCard !== card) {
-            otherCard.classList.remove('expanded');
+    
+    // Close all other cards first
+    allCards.forEach(card => {
+        if (card !== clickedCard) {
+            card.classList.remove('expanded');
         }
     });
     
     // Toggle the clicked card
-    card.classList.toggle('expanded');
+    clickedCard.classList.toggle('expanded');
+    
+    // Log the state
+    console.log('Card expanded:', clickedCard.classList.contains('expanded'));
 }
 
-// Add smooth scrolling and initial load animation
-document.addEventListener('DOMContentLoaded', function() {
+function addLoadingAnimations() {
     const cards = document.querySelectorAll('.service-card');
+    
     cards.forEach((card, index) => {
+        // Set initial state
         card.style.opacity = '0';
         card.style.transform = 'translateY(20px)';
         
+        // Animate in with delay
         setTimeout(() => {
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
         }, index * 200);
     });
-});
+}
+
+// Legacy function for onclick attribute (backup)
+function toggleService(card) {
+    handleServiceClick(card);
+}
 </script>
 
 </body>
