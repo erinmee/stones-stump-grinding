@@ -17,16 +17,74 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
 .logo {
     color: #fff;
     font-size: 1.5em;
     font-weight: 500;
     letter-spacing: -0.5px;
 }
+
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+.phone-link {
+    text-decoration: none;
+    color: #fff;
+    background: #e67e22;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.phone-link:hover {
+    background: #d35400;
+    transform: translateY(-1px);
+}
+
+.phone-number {
+    font-size: 1em;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile responsive navigation */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    
+    .nav-right {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .phone-link {
+        align-self: center;
+        font-size: 1.1em;
+        padding: 10px 20px;
+    }
 }
 .nav-links a {
     color: #fff;
@@ -207,11 +265,22 @@ header {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    overflow: hidden;
 }
 
 .service-preview:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.service-preview-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: block;
 }
 
 .service-preview h3 {
@@ -246,6 +315,133 @@ header {
 
 .services-cta .btn:hover {
     background: #34495e;
+}
+
+/* Social Media Section */
+.social-connect {
+    padding: 80px 20px;
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+}
+
+.social-connect .content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.social-connect h2 {
+    font-size: 2.5em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.social-connect > p {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #bdc3c7;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    background: #34495e;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.social-link:hover {
+    background: #3b5998;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    background: #3b5998;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.social-link:hover .social-icon {
+    background: #4267B2;
+}
+
+.social-content {
+    text-align: left;
+    flex: 1;
+}
+
+.social-content h3 {
+    font-size: 1.4em;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    color: #fff;
+}
+
+.social-content p {
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0;
+    color: #bdc3c7;
+    line-height: 1.4;
+}
+
+.social-cta {
+    margin-top: 40px;
+}
+
+.social-cta p {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #bdc3c7;
+    margin: 0;
+}
+
+/* Responsive design for social section */
+@media (max-width: 768px) {
+    .social-connect {
+        padding: 60px 20px;
+    }
+    
+    .social-connect h2 {
+        font-size: 2em;
+    }
+    
+    .social-link {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .social-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .social-content {
+        text-align: center;
+    }
 }
 .content {
     padding: 20px;
