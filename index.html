@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stone's Stump Grinding</title>
+    <title>Stone's Stump Grinding LLC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/grind-wheel.svg">
+    <link rel="alternate icon" href="images/grind-wheel.svg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,12 +27,98 @@
 
 <section class="hero">
     <h1>Professional Stump Grinding and Land Clearing</h1>
-    <p>Your trusted local experts in stump removal, small excavation, and brush clearing.</p>
+    <p>Your trusted local experts in stump removal, excavation, and brush clearing throughout Snohomish County and surrounding Washington areas.</p>
     <a href="contact.html" class="btn">Get a Free Quote</a>
+</section>
+
+<section class="company-intro">
+    <div class="content">
+        <h2>About Stone's Stump Grinding LLC</h2>
+        <p>With years of experience serving <span class="highlight">Snohomish County and surrounding Washington counties</span>, Stone's Stump Grinding LLC has built a reputation for reliable, professional land clearing services. We understand that every property is unique, and we take pride in delivering customized solutions that meet your specific needs.</p>
+        
+        <p>Our team combines state-of-the-art equipment with extensive local knowledge to tackle projects of all sizes. Whether you're a homeowner looking to remove a stubborn stump, a contractor needing site preparation, or a property manager maintaining large acreage, we have the expertise and equipment to get the job done right.</p>
+        
+        <p>We're committed to <span class="highlight">environmental responsibility</span> and always clean up after ourselves, leaving your property better than we found it. Our goal is to help you reclaim your land and realize your vision for your outdoor space.</p>
+    </div>
+</section>
+
+<section class="services-overview">
+    <div class="content">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-preview">
+                <div class="service-icon">🌳</div>
+                <h3>Stump Grinding</h3>
+                <p>Complete removal of stumps below ground level using professional-grade equipment. We handle stumps of all sizes and ensure minimal impact to your landscaping.</p>
+            </div>
+            
+            <div class="service-preview">
+                <div class="service-icon">🚜</div>
+                <h3>Excavation Work</h3>
+                <p>From small residential digs to larger site preparation projects. Our experienced operators provide precise excavation services for construction, utilities, and drainage.</p>
+            </div>
+            
+            <div class="service-preview">
+                <div class="service-icon">🌿</div>
+                <h3>Brush Clearing</h3>
+                <p>Comprehensive brush and overgrowth removal to restore your property. Perfect for fire prevention, property line clearing, and creating usable outdoor space.</p>
+            </div>
+        </div>
+        
+        <div class="services-cta">
+            <a href="services.html" class="btn">View All Services</a>
+        </div>
+    </div>
 </section>
 
 <footer>
     <p>© 2025 Stone's Stump Grinding LLC. All rights reserved.</p>
 </footer>
+
+<script>
+// Improved parallax effect for hero section
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
+    const heroBackground = hero.querySelector('::before') || hero;
+    
+    // Reduced parallax rate for less gap
+    const rate = scrolled * -0.3;
+    
+    if (hero && window.innerWidth > 768) {
+        // Apply transform to the background pseudo-element via CSS custom property
+        hero.style.setProperty('--parallax-offset', `${rate}px`);
+        
+        // Alternative method: transform the background position
+        const backgroundPosY = 50 + (scrolled * -0.1);
+        hero.style.backgroundPosition = `center ${backgroundPosY}%`;
+    }
+});
+
+// Add fade-in animation for service cards
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = document.querySelectorAll('.service-preview');
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    serviceCards.forEach(function(card, index) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+        observer.observe(card);
+    });
+});
+</script>
+
 </body>
 </html>
